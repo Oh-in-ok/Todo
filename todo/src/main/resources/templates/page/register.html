@@ -1,0 +1,43 @@
+<html lang="ko" xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout
+      layout:decorate='~{layouts/layout}'>
+
+<div layout:fragment="content" class="content">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          New
+        </div>
+        <div class="panel-body">
+          <form method="post" action="todo/register" th:object="${todoFormDTO}">
+            <input type="hidden" th:field="*{tno}">
+
+            <div class="input-group mb-3">
+              <span class="input-group-text">Title</span>
+              <input type="text" class="form-control" placeholder="Title" th:field="*{title}">
+            </div>
+
+            <div class="input-group mb-3">
+              <span class="input-group-text">DueDate</span>
+              <input type="text" class="form-control" th:field="*{dueDate}">
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text">Writer</span>
+              <input type="text" class="form-control" placeholder="Writer" th:field="*{writer}">
+            </div>
+
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary"
+                      th:formaction="@{/todo/register}">Submit
+              </button>
+              <button data-oper="list" class="btn btn-secondary"
+                      th:formaction="@{/todo/list}">list
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
