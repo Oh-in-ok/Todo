@@ -7,8 +7,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -24,15 +23,18 @@ public class TodoEntity {
   private String title;
 
   private String writer;
-  private Timestamp dueDate;
 
+  private String dueDate;
+
+  @Column(nullable = false)
   private boolean finished;
 
   public static TodoEntity createTodo(TodoFormDTO todoFormDTO) {
     TodoEntity todo = new TodoEntity();
     todo.setTitle(todoFormDTO.getTitle());
     todo.setWriter(todoFormDTO.getWriter());
-    todo.setFinished(todoFormDTO.isFinished());
+    todo.setDueDate(todoFormDTO.getDueDate());
+    todo.setFinished(todoFormDTO.getFinished());
     return todo;
   }
 
@@ -40,6 +42,7 @@ public class TodoEntity {
     this.tno = todoFormDTO.getTno();
     this.title = todoFormDTO.getTitle();
     this.writer = todoFormDTO.getWriter();
-    this.finished = todoFormDTO.isFinished();
+    this.dueDate = todoFormDTO.getDueDate();
+    this.finished = todoFormDTO.getFinished();
   }
 }

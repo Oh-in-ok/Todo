@@ -12,7 +12,7 @@
         </div>
 
         <div class="panel-body">
-          <form method="post" action="todo/modify/{tno}" th:object="${todoFormDTO}">
+          <form method="post" th:action="@{'/todo/modify/' + ${tno}}" th:object="${todo}">
             <div class="input-group mb-3">
               <span class="input-group-text">TNO</span>
               <input type="text" class="form-control" th:value="${todo.tno}" readonly>
@@ -23,7 +23,7 @@
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text">DueDate</span>
-              <input type="text" class="form-control" th:value="${todo.dueDate}">
+              <input type="date" class="form-control" th:value="${todo.dueDate}">
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text">Writer</span>
@@ -35,12 +35,10 @@
                 Finished
               </label>
             </div>
-
             <div class="modal-footer">
-              <button type="remove" class="btn btn-danger">Remove</button>
-              <button type="modify" class="btn btn-primary">Modify
-              </button>
-              <button data-oper="list" class="btn btn-secondary" th:formaction="@{/todo/list}">list</button>
+              <button type="submit" class="btn btn-danger" th:formaction="@{'/todo/remove/' +${todo.tno}}">Remove</button>
+              <button type="submit" data-oper="modify" class="btn btn-primary" th:formaction="@{'/todo/' + ${todo.tno}}">Modify</button>
+              <button type="submit" data-oper="list" class="btn btn-secondary" th:formaction="@{/todo/list}">list</button>
             </div>
           </form>
         </div>
@@ -49,3 +47,8 @@
   </div>
 </div>
 
+<th:block layout:fragment="script">
+  <script th:inline="javascript">
+
+  </script>
+</th:block>

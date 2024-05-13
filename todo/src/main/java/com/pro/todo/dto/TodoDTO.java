@@ -5,9 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -18,6 +16,7 @@ public class TodoDTO {
   private Long tno;
   private String title;
   private String writer;
-  private Timestamp dueDate;
-  private boolean finished;
+  private String dueDate;
+  private Boolean finished;
+
 }

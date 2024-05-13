@@ -20,7 +20,7 @@
 
             <div class="input-group mb-3">
               <span class="input-group-text">DueDate</span>
-              <input type="text" class="form-control" th:field="*{dueDate}">
+              <input type="date" class="form-control" placeholder="년-월-일" th:field="*{dueDate}">
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text">Writer</span>
@@ -28,12 +28,8 @@
             </div>
 
             <div class="modal-footer">
-              <button type="submit" class="btn btn-primary"
-                      th:formaction="@{/todo/register}">Submit
-              </button>
-              <button data-oper="list" class="btn btn-secondary"
-                      th:formaction="@{/todo/list}">list
-              </button>
+              <button type="submit" class="btn btn-primary" th:formaction="@{/todo/register}">Submit</button>
+              <button data-oper="list" class="btn btn-secondary" th:formaction="@{/todo/list}">list</button>
             </div>
           </form>
         </div>

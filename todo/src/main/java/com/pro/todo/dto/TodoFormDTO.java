@@ -6,8 +6,7 @@ import lombok.Setter;
 import org.modelmapper.ModelMapper;
 
 import javax.validation.constraints.NotBlank;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -19,8 +18,9 @@ public class TodoFormDTO {
   @NotBlank(message = "작성자를 입력 해주세요.")
   private String writer;
 //  @NotBlank(message = "기한을 입력 해주세요.")
-  private Timestamp dueDate;
-  private boolean finished;
+  private String dueDate;
+
+  private Boolean finished;
 
   static ModelMapper modelMapper = new ModelMapper();
 

@@ -25,26 +25,37 @@ public class TodoControllerTests {
   @Autowired
   private MockMvc mockMvc;
 
-  public TodoEntity createTodo(String title, String writer) {
+  public TodoEntity createTodo(String title, String writer, Boolean finished) {
     TodoFormDTO todoFormDTO = new TodoFormDTO();
     todoFormDTO.setTno(1L);
     todoFormDTO.setTitle(title);
     todoFormDTO.setWriter(writer);
-    todoFormDTO.setDueDate(LocalDateTime.now());
+//    todoFormDTO.setDueDate();
+    todoFormDTO.setFinished(finished);
     TodoEntity todo = TodoEntity.createTodo(todoFormDTO);
     return  todo;
   }
 
   @Test
   @DisplayName("데이터 저장")
+//  @Transactional
   public void savedTest() {
-    for(int i =1; i<10; i++) {
+    for(int i = 1; i < 6; i++) {
 
       String title = "Test" + i;
       String writer = "User" +i;
-      TodoEntity todo = this.createTodo(title, writer);
-      todoService.saveTodo(todo);
-      System.out.println("===========================" + createTodo(title, writer));
+      if(i % 2 == 0)
+      {
+        Boolean finished = false;
+        TodoEntity todo = this.createTodo(title, writer, finished);
+        todoService.saveTodo(todo);
+        System.out.println("===========================" + createTodo(title, writer, finished));
+      } else {
+        Boolean finished = true;
+        TodoEntity todo = this.createTodo(title, writer, finished);
+        todoService.saveTodo(todo);
+        System.out.println("===========================" + createTodo(title, writer, finished));
+      }
     }
   }
 
@@ -57,5 +68,11 @@ public class TodoControllerTests {
     }
   }
 
-
+  @Test
+  @DisplayName("데이터 수정")
+  public void updateTodo() {
+//    Long updateTno = todoService.getTodoDtl(3L).getTno();
+//    TodoFormDTO todo = TodoFormDTO.of(this.createTodo("과제하기", "홍길동", false));
+//    todoService.updateTodo(3L, "할일");
+  }
 }
